@@ -1,0 +1,23 @@
+# where the routes are stored 
+from flask import Blueprint,render_template,session
+
+
+views = Blueprint('views',__name__)
+
+@views.route('/')
+def home():
+    return render_template("home.html")
+
+@views.route('/my-cart')
+def my_cart():
+    return "<p>This is your cart</p>"
+
+@views.route('/menu')
+def menu():
+    return render_template("menu.html")
+
+@views.route ('/checkout')
+def checkout():
+    return "<p>This is the checkout</p>"
+
+
