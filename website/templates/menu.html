@@ -1,5 +1,19 @@
 {% block title%}Menu{% endblock%}
 
 {% block content %}
+<div class="header">
+    <h1>DoughDev Pizza</h1>
+    <h1>Pizza Menu 🍕🍕</h1>
+</div>
 <h1>Welcome to the menu Page</h1>
+
+<div class="menu-container">
+    <div class="pizza-card">
+        <h3>Margherita</h3>
+        <form action="{{ url_for ('views.my_cart')}}" method="POST">
+            <input type="submit" name="pizza_name" value="Margherita">
+            <button type="submit" class="btn">Add to Cart</button>
+        </form>
+    </div>
+</div>
 {% endblock%}

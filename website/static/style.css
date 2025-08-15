@@ -1,3 +1,51 @@
-body{
-    background-color: aquamarine;
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background: url('pizza.jpg') no-repeat center center/cover;
+}
+
+.signup-container {
+  background: rgba(0, 0, 0, 0.65); /* dark overlay for readability */
+  padding: 2rem;
+  border-radius: 10px;
+  width: 300px;
+  margin: 5% auto;
+  color: #fff;
+  text-align: center;
+}
+
+.signup-container h2 {
+  margin-bottom: 1.5rem;
+}
+
+.signup-container label {
+  display: block;
+  text-align: left;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+}
+
+.signup-container input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 1rem;
+  border: none;
+  border-radius: 5px;
+}
+
+.signup-container button {
+  width: 100%;
+  padding: 10px;
+  background: #ff9800;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.signup-container button:hover {
+  background: #e68900;
 }
