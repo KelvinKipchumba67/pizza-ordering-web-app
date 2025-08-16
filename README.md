@@ -72,6 +72,7 @@ Getting Started
 
 1. Clone the repo
    git clone https://github.com/KelvinKipchumba67/pizza-ordering-web-app.git
+   
    cd your-repo-name
 
 2.Go to main.py
