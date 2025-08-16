@@ -2,6 +2,14 @@
 {% block title%}Login{% endblock%}
 
 {% block content %}
+{% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+    {% for category, message in messages %}
+      <div class="alert {{ category }}">{{ message }}</div>
+    {% endfor %}
+  {% endif %}
+{% endwith %}
+
 <form method="POST">
     <style>
 
@@ -64,7 +72,7 @@
 }
 
     </style>
-   
+<form method="POST" action="{{ url_for('auth.login') }}">
     <div class="form">
        <h2 align="center">Login</h2>
         <label for="text">Username</label>

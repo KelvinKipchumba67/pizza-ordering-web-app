@@ -1,19 +1,110 @@
+{% extends "base.html" %}
+
 {% block title%}Menu{% endblock%}
 
 {% block content %}
-<div class="header">
-    <h1>DoughDev Pizza</h1>
-    <h1>Pizza Menu 🍕🍕</h1>
-</div>
-<h1>Welcome to the menu Page</h1>
+<style>
+    .display{
+        display: flex;
+        flex-wrap: wrap;
+        gap: 30px;
+        justify-content: center;
+        padding: 40px 20px;
+    }
+    .menu-container{
+        background-color: #E8D5B2;
+        border: 1px solid #B4A059;
+        padding: 20px;
+        width: 300px;
+        box-sizing: 0 4px 8px rgba(0,0,0,0.05);
+        text-align: center;
+        display: block;
+        align-items: center;
+        border-radius: 20px;
+    }
+    .menu-container h4{
+        color: #000;
+        font-size: 20px;
+        margin-bottom: 1rem;
+    }
+    .menu-container blockquote{
+        margin-top: 10px;
+    }
 
-<div class="menu-container">
-    <div class="pizza-card">
-        <h3>Margherita</h3>
-        <form action="{{ url_for ('views.my_cart')}}" method="POST">
-            <input type="submit" name="pizza_name" value="Margherita">
-            <button type="submit" class="btn">Add to Cart</button>
-        </form>
-    </div>
+    .menu-container img {
+        margin-top: 5px;
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+
+    .menu-container:hover{
+        background-color: bisque;
+    }
+    .btn{
+    padding: 12px 32px;
+    font-size: 1rem;
+    text-transform: uppercase;
+    background-color: rgb(248, 217, 15);
+    color: #222;
+    border: 1px solid #fff;
+    font-weight: 600;
+    cursor: pointer;
+}
+.btn:hover{
+    background: transparent;
+    color: black;
+    transition: 0.3s;
+}
+.header{
+    display: inline;
+    margin: 40px;
+    margin-left: 30px;
+    color: #fff;
+    font-size: 1rem;
+    padding: 20px;
+}
+</style>
+<div class="header">
+    <h1 align="center">Pizza Menu 🍕🍕</h1><br><br><br>
+    <h1 align="center">Welcome to the menu Page</h1>
 </div>
+<section class="display">
+<div class="menu-container">
+    <h4>Tuna</h4>
+    <img src="{{ url_for('static', filename='tuna.jpeg') }}" alt="Tuna">
+    <blockquote></blockquote>
+
+    <button class="btn">Add To Cart</button>
+</div>
+<div class="menu-container">
+    <h4>Pepperoni</h4>
+    <img src="{{ url_for('static', filename='pepperoni1.jpg') }}" alt="Pepperoni">
+    <blockquote></blockquote>
+
+    <button class="btn">Add To Cart</button>
+</div>
+<div class="menu-container">
+    <h4>Four Cheese</h4>
+    <img src="{{ url_for('static', filename='four cheese.jpg') }}" alt="Four cheese">
+    <blockquote></blockquote>
+
+    <button class="btn">Add To Cart</button>
+</div>
+<div class="menu-container">
+    <h4>Margherita</h4>
+    <img src="{{ url_for('static', filename='four cheese.jpg') }}" alt="Margherita">
+    <blockquote></blockquote>
+
+    <button class="btn">Add To Cart</button>
+</div>
+<div class="menu-container">
+    <h4>Hawaiian</h4>
+    <img src="{{ url_for('static', filename='hawaiian.jpg') }}" alt="Hawaiian">
+    <blockquote></blockquote>
+
+    <button class="btn">Add To Cart</button>
+</div>
+</div>
+</section>
 {% endblock%}

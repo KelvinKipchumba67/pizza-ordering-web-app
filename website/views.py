@@ -8,9 +8,9 @@ views = Blueprint('views',__name__)
 def home():
     return render_template("home.html")
 
-@views.route('/my-cart')
+@views.route('/cart')
 def my_cart():
-    return "<p>This is your cart</p>"
+    return render_template("cart.html")
 
 @views.route('/menu')
 def menu():

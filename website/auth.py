@@ -1,7 +1,7 @@
 from flask import Blueprint,render_template
 from flask import Blueprint, render_template, redirect, url_for, request, flash
 from werkzeug.security import generate_password_hash, check_password_hash
-from flask_login import login_user, logout_user, login_required
+from flask_login import login_user, logout_user, login_required, current_user
 from .models import User
 from . import db
 
@@ -14,28 +14,20 @@ def login():
 
 
         user=User.query.filter_by(username=username).first()
-
-
-        if not user:
-            flash('User not found.')
-            return redirect(url_for('auth.login'))
-
-        if not user.password:
-            flash('Password not set for this account.')
-            return redirect(url_for('auth.login'))
-
-        if not check_password_hash(user.password, password):
-            flash('Invalid password.')
-
-
-        if not user or not check_password_hash(user.password, password):
-            flash('Invalid login credentials.')
-            return redirect (url_for('auth.login'))
         if user:
-            flash('Sucessful Login')
-            return redirect(url_for('home'))
+            if check_password_hash(user.password, password):
+                flash('Logged in Successfully!', category='success')
 
-    return render_template("login.html")
+                login_user(user, remember=True)
+                return redirect(url_for('views.home'))
+            else:
+                flash('Incorrect password', category='error')
+        else:
+            flash('Username does not exist', category='error')
+
+     
+
+    return render_template("login.html", user=current_user)
 
 @auth.route('/logout')
 def logout():
