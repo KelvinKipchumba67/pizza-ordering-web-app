@@ -65,33 +65,70 @@
 .content {
     flex: 1; /* pushes footer down */
 }
+.flash-messages {
+    list-style: none;
+    padding: 10px;
+    margin: 10px auto;
+    max-width: 500px;
+    border-radius: 8px;
+}
+
+.flash-messages .success {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.flash-messages .error {
+    background-color: #f8d7da;
+    color: #721c24;
+}
 
 
 
     </style>
-
+    
+<nav>
     <header class="header-section">
         <h1>DoughDev Pizza</h1>
         <a href="/">Home</a>
+        {% if not current_user.is_authenticated %}
         <a href="/sign-up">Sign up</a>
         <a href="/login">Login</a>
+        {% else %}
         <a href="/menu">Menu</a>
         <a href="/cart">Your Cart</a>
-        <a href="/">Logout</a>
-    </header>
+        <a href="/logout">Logout</a>
+       <div class="welcome">
+            Welcome, {{ current_user.username }} 👋
+        </div>
+    {% endif %}
 
+    </header>
+</nav>
+{% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+    <ul class="flash-messages">
+      {% for category, message in messages %}
+        <li class="{{ category }}">{{ message }}</li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+{% endwith %}
     <div class="content">
     </div>
-{% if 'username' in session %}
-<div class="welcome-top-right">
-    Welcome, {{ session.username }}!
-</div>
-{% endif %}
+
+<script>
+  setTimeout(() => {
+    const messages = document.querySelector('.flash-messages');
+    if (messages) messages.style.display = 'none';
+  }, 4000); // 4 seconds
+</script>
 
     <div id="content">
         {% block content%}{% endblock%}
     </div>
      <footer class="site-footer">
+        <h4>Contact Us at <a href="gmail.com">support@gmail.com</a></h4>
         <p>&copy; 2025 DoughDev Pizza. All rights reserved.</p>
     </footer>
 </body>

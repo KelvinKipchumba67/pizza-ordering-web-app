@@ -30,8 +30,10 @@ def login():
     return render_template("login.html", user=current_user)
 
 @auth.route('/logout')
+@login_required
 def logout():
-    return "<P>Logout</p>"
+    logout_user()
+    return redirect(url_for('views.home'))
 
 
 @auth.route ('/sign-up', methods=['GET', 'POST'])

@@ -1,6 +1,138 @@
 {% extends "base.html" %}
-{% block title%}Cart {% endblock%}
 
-{% block content%}
-<h1>Welcome to the cart page</h1>
+{% block title %}My Cart{% endblock %}
+
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Your Cart</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='cart.css') }}">
+</head>
+<style>
+    body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: url('static/img/pic2.webp');
+
+    background-size: cover;
+    color: #fff;
+}
+
+.cart-container {
+    background-color: rgba(0, 0, 0, 0.7);
+    max-width: 500px;
+    margin: 60px auto;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.5);
+}
+
+.cartheading {
+    font-size: 2.5rem;
+    color: yellow;
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    
+}
+.cartheading::before{
+    content: '🛒';
+    font-size: 2.5rem;
+    animation: bounce 2s infinite;
+}
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+    40% { transform: translateY(-10px); }
+    60% { transform: translateY(-5px); }
+}
+
+.cart-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 0;
+    border-bottom: 1px solid #ccc;
+}
+
+.item-name {
+    font-weight: bold;
+    color: #fff;
+}
+
+.item-quantity,
+.item-price {
+    color: #ddd;
+}
+
+.cart-total {
+    text-align: right;
+    margin-top: 20px;
+    font-size: 1.2em;
+    color: #ffcc00;
+}
+
+.checkout-btn {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    margin-top: 25px;
+    background-color: #ffcc00;
+    color: #000;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.checkout-btn:hover {
+    background-color: #e6b800;
+}
+.remove-btn {
+    margin-left: 10px;
+    color: #ff6666;
+    text-decoration: none;
+    font-size: 0.9em;
+}
+
+.remove-btn:hover {
+    color: #ff3333;
+    text-decoration: underline;
+}
+</style>
+<body>
+    <div class="cart-container">
+        <h1 class="cartheading">Your Cart</h1>
+        
+        
+        <ul class="cart-list">
+    {% for item in cart_items %}
+    <li class="cart-item">
+        <span class="item-name">{{ item.pizza.name }}</span>
+        <span class="item-quantity">{{ item.quantity }} ×</span>
+        <span class="item-price">KSh {{ item.pizza.price }}</span>
+        <a href="{{ url_for('views.remove_from_cart', item_id=item.id) }}" class="remove-btn">Remove</a>
+    </li>
+    {% endfor %}
+    <div class="cart-total">
+            <strong>Total:</strong> KSh {{ total }}
+        </div>
+</ul>
+        <form action="{{ url_for('views.checkout') }}" method="POST">
+            <button class="checkout-btn" type="submit">Checkout</button>
+        </form>
+    </div>
+</body>
+</html>
 {% endblock %}

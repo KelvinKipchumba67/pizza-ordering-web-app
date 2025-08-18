@@ -74,8 +74,14 @@
     color: black;
     transition: 0.3s;
 }
+.welcome{
+    color: #d32e62;
+    font-size: 1rem;
+    text-align: right;
+}
 </style>
-<h1 class="home" style="color: #E8D5B2;">Welcome to DoughDev Pizza</h1>
+
+<h1 class="home" style="color: yellow;">Welcome to DoughDev Pizza</h1>
 <h2 class="home">We have the best of the best pizza.</h2>
 <a href="/menu"><h3 align="center">Order Now</h3></a>
 <section class="display">
@@ -84,14 +90,16 @@
     <img src="{{ url_for('static', filename='tuna.jpeg') }}" alt="Tuna">
     <blockquote></blockquote>
 
-    <button class="btn">Add To Cart</button>
+    <button class="btn"><a href="{{ url_for('views.add_to_cart', pizza_id=1) }}">Add To Cart</a>
+</button>
 </div>
 <div class="menu-container">
     <h4>Pepperoni</h4>
     <img src="{{ url_for('static', filename='pepperoni1.jpg') }}" alt="Tuna">
-    <blockquote></blockquote>
+    <blockquote>If you like Pepperoni, you'll love this pizza.</blockquote>
 
-    <button class="btn">Add To Cart</button>
+   <button class="btn"><a href="{{ url_for('views.add_to_cart', pizza_id=2) }}">Add To Cart</a>
+</button>
 </div>
 <div class="menu-container">
     <h4>Four Cheese</h4>

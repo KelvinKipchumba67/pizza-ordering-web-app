@@ -64,6 +64,9 @@
     font-size: 1rem;
     padding: 20px;
 }
+a{
+    text-decoration: none;
+}
 </style>
 <div class="header">
     <h1 align="center">Pizza Menu 🍕🍕</h1><br><br><br>
@@ -75,36 +78,49 @@
     <img src="{{ url_for('static', filename='tuna.jpeg') }}" alt="Tuna">
     <blockquote></blockquote>
 
-    <button class="btn">Add To Cart</button>
+    <button class="btn"><a href="{{ url_for('views.add_to_cart', pizza_id=1) }}">Add To Cart</a>
+</button>
 </div>
 <div class="menu-container">
     <h4>Pepperoni</h4>
     <img src="{{ url_for('static', filename='pepperoni1.jpg') }}" alt="Pepperoni">
     <blockquote></blockquote>
 
-    <button class="btn">Add To Cart</button>
+    <button class="btn"><a href="{{ url_for('views.add_to_cart', pizza_id=2) }}">Add To Cart</a>
+</button>
 </div>
 <div class="menu-container">
     <h4>Four Cheese</h4>
     <img src="{{ url_for('static', filename='four cheese.jpg') }}" alt="Four cheese">
     <blockquote></blockquote>
 
-    <button class="btn">Add To Cart</button>
+    <button class="btn"><a href="{{ url_for('views.add_to_cart', pizza_id=3) }}">Add To Cart</a>
+</button>
 </div>
 <div class="menu-container">
     <h4>Margherita</h4>
     <img src="{{ url_for('static', filename='four cheese.jpg') }}" alt="Margherita">
     <blockquote></blockquote>
 
-    <button class="btn">Add To Cart</button>
+    <button class="btn"><a href="{{ url_for('views.add_to_cart', pizza_id=4) }}">Add To Cart</a>
+</button>
 </div>
 <div class="menu-container">
     <h4>Hawaiian</h4>
     <img src="{{ url_for('static', filename='hawaiian.jpg') }}" alt="Hawaiian">
     <blockquote></blockquote>
 
-    <button class="btn">Add To Cart</button>
+    <button class="btn"><a href="{{ url_for('views.add_to_cart', pizza_id=5) }}">Add To Cart</a>
+ </button>
 </div>
+
+<div class="menu-container">
+    <h4>Mushroom</h4>
+    <img src="{{ url_for('static', filename='hawaiian.jpg') }}" alt="hawaiian">
+    <blockquote></blockquote>
+
+    <button class="btn"><a href="{{ url_for('views.add_to_cart', pizza_id=6) }}">Add To Cart</a>
+</button>
 </div>
 </section>
 {% endblock%}
