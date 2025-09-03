@@ -1,103 +1,112 @@
-Pizza Ordering Web App(DoughDev Pizza)
+# 🍕 DoughDev Pizza Ordering Web App
 
-This is a simple Flask-based web application with authentication features. The project is part of my learning journey in backend and full-stack development, where I’m building a foundation in Flask, SQLAlchemy, user authentication, and web security practices.
+Welcome to DoughDev Pizza! This is a modern, full-stack pizza ordering web application built with Flask, SQLAlchemy, and Flask-Login. It features user authentication, a dynamic menu, cart management, and a complete checkout flow.
 
-Features
+---
 
-User registration and login
+## 🚀 Features
 
-Password hashing with werkzeug.security
+- User registration and login
+- Secure password hashing
+- Session management (Flask-Login)
+- Flash messaging for user feedback
+- SQLite database with SQLAlchemy ORM
+- Modular blueprint structure
+- Dynamic pizza menu and cart
+- Address collection and order confirmation
+- Responsive, colorful UI
 
-Session management using Flask-Login
+---
 
-Flash messaging for user feedback
+## 🛠️ Tech Stack
 
-SQLite database with SQLAlchemy ORM
+- **Backend:** Flask (Python)
+- **Database:** SQLite (SQLAlchemy ORM)
+- **Authentication:** Flask-Login, Werkzeug security
+- **Frontend:** HTML, CSS (internal and static)
 
-Blueprint structure for clean, modular code
+---
 
-📚 What I’m Learning in the Process
+## 📂 Project Structure
 
-As I build this web app, I’m actively learning:
-
-Flask Basics – app structure, routes, templates, and blueprints
-
-Authentication – handling user login/logout, secure password storage
-
-SQLAlchemy ORM – defining models and querying the database
-
-Flask-Login – managing sessions and restricting access to certain routes
-
-Flask Flash Messages – providing user feedback
-
-Modular Project Structure – separating logic into blueprints (auth, views, models)
-
-Debugging Flask Apps – using print statements, checking routes, and template feedback
-
-Frontend + Backend Connection – linking HTML forms with Flask routes
-
-🛠️ Tech Stack
-
-Backend: Flask (Python)
-
-Database: SQLite (via SQLAlchemy)
-
-Authentication: Flask-Login, Werkzeug security
-
-Frontend: HTML, CSS (basic templates, can expand later)
-
-📂 Project Structure
+```
 pizza-ordering-system/
-instance/
--database.db
-website/
--static/
--images
--style.css Though i have used internal css
--templates/
--base.html
--cart.html
--home.html
--login.html
--menu.html
--signup.html
-**init**.py
-auth.py
-models.py
-views.py
-main.py
-README.md
+├── instance/
+│   └── database.db
+├── website/
+│   ├── static/
+│   │   ├── style.css
+│   │   └── images/
+│   ├── templates/
+│   │   ├── base.html
+│   │   ├── cart.html
+│   │   ├── home.html
+│   │   ├── login.html
+│   │   ├── menu.html
+│   │   ├── signup.html
+│   │   ├── checkout.html
+│   │   └── confirmation.html
+│   ├── __init__.py
+│   ├── auth.py
+│   ├── models.py
+│   └── views.py
+├── main.py
+└── README.md
+```
 
-Getting Started
+---
 
-1. Clone the repo
+## ⚡ Getting Started
+
+1. **Clone the repository:**
+   ```bash
    git clone https://github.com/KelvinKipchumba67/pizza-ordering-web-app.git
-   cd your-repo-name
+   cd pizza-ordering-web-app
+   ```
+2. **Install dependencies:**
+   ```bash
+   pip install flask flask_sqlalchemy flask_login werkzeug
+   ```
+3. **Run the app:**
+   ```bash
+   python main.py
+   ```
+4. **Open your browser:**
+   Visit `http://127.0.0.1:5000` to start ordering!
 
-2.Go to main.py
+---
 
-3. Run the app
+## 🧑‍💻 Usage
 
-✅ Future Improvements
+- **Sign up** for a new account
+- **Log in** to access the menu and cart
+- **Browse the menu** and add pizzas to your cart
+- **Proceed to checkout**, enter your delivery address, and place your order
+- **View order confirmation** with address and payment info
 
-Add email verification
+---
 
-Implement password reset
+## 🌱 Contributing
 
-Improve frontend UI (Bootstrap/Tailwind)
+Pull requests and suggestions are welcome! If you find a bug or want to add a feature, feel free to open an issue or submit a PR.
 
-Add user profile & dashboard
+---
 
-Deploy to a cloud service (Heroku/Render)
+## 📈 Future Improvements
 
-📖 Learning Mindset
+- Email verification
+- Password reset
+- Improved frontend UI (Bootstrap/Tailwind)
+- User profile & dashboard
+- Online payment integration
+- Deployment to Heroku/Render
 
-This project is not just about coding — it’s about understanding the fundamentals of web development step by step. I’m documenting my progress and refining my skills in:
+---
 
-Backend development with Flask
+## 📖 Learning Mindset
 
-Secure authentication practices
+This project is a hands-on journey into web development fundamentals. It covers backend logic, secure authentication, database management, and connecting frontend to backend. Every feature is an opportunity to learn and grow as a developer.
 
-Database management with SQLAlchemy
+---
 
-Connecting frontend and backend
+**Made with ❤️ by Kelvin Kipchumba**

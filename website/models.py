@@ -29,6 +29,7 @@ class Order(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
     created_at = db.Column(db.DateTime(timezone=True), server_default=func.now())
+    address = db.Column(db.String(300), nullable=True)
     items = db.relationship('OrderItem', backref='order', lazy=True)
 
 
@@ -38,3 +39,4 @@ class OrderItem(db.Model):
     pizza_id = db.Column(db.Integer, db.ForeignKey('pizza.id'), nullable=False)
     quantity = db.Column(db.Integer, default=1)
     pizza = db.relationship('Pizza')
+

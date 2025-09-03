@@ -31,21 +31,6 @@ def create_app():
 
     with app.app_context():
         db.create_all()
-        if not Pizza.query.first():  # only add if DB is empty
-            pizzas = [
-                Pizza(name="Tuna", price=800),
-                Pizza(name="Pepperoni", price=950),
-                Pizza(name="Four Cheese", price=1000),
-                Pizza(name="Margherita", price=750),
-                Pizza(name="Hawaiian", price=850),
-                Pizza(name="Mushroom", price=780),
-            ]
-            db.session.add_all(pizzas)
-            db.session.commit()
-            print("✅ Pizzas added to the database!")
-                  
-        else:
-            print("⚠️ Pizzas already exist")
     
 
 

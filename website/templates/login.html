@@ -4,43 +4,27 @@
 {% block content %}
 
 
-<form method="POST">
-    <style>
-
-    .btn{
-    padding: 12px 32px;
-    font-size: 1rem;
-    text-transform: uppercase;
-    background-color: rgb(248, 217, 15);
-    color: #222;
-    border: 1px solid #fff;
-    font-weight: 600;
-    cursor: pointer;
-    }
-
-
+<style>
 .form {
   background: #d32e62;
-  opacity: 100%;
   padding: 2rem;
   border-radius: 10px;
-  width: 300px;
+  width: 320px;
   margin: 5% auto;
   color: #fff;
   text-align: center;
+  box-shadow: 0 0 15px rgba(0,0,0,0.15);
 }
-
 .form h2 {
+  color: yellow;
   margin-bottom: 1.5rem;
 }
-
 .form label {
   display: block;
   text-align: left;
   margin-bottom: 0.5rem;
   font-weight: bold;
 }
-
 .form input {
   width: 100%;
   padding: 10px;
@@ -48,33 +32,29 @@
   border: none;
   border-radius: 5px;
 }
-
 .form button {
   width: 100%;
   padding: 10px;
-  background: #ff9800;
+  background: yellow;
   border: none;
   border-radius: 5px;
-  color: white;
+  color: #d32e62;
   font-size: 1rem;
+  font-weight: bold;
   cursor: pointer;
   transition: 0.3s ease;
 }
-
-.signup-container button:hover {
-  background: #e68900;
+.form button:hover {
+  background: #ffe066;
 }
-
-    </style>
+</style>
 <form method="POST" action="{{ url_for('auth.login') }}">
     <div class="form">
-       <h2 align="center">Login</h2>
+       <h2>Login</h2>
         <label for="text">Username</label>
-        <input type="text" name="username" placeholder="Enter Username" required><br> <br>
- 
+        <input type="text" name="username" placeholder="Enter Username" required>
         <label for="Password">Password</label>
-        <input type="password" name="password" placeholder="Enter password" required><br><br>
-
+        <input type="password" name="password" placeholder="Enter password" required>
         <button type="submit" class="btn">Login</button>
     </div>
 </form>

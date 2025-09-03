@@ -12,61 +12,68 @@
         padding: 40px 20px;
     }
     .menu-container{
-        background-color: #E8D5B2;
-        border: 1px solid #B4A059;
+        background-color: #d32e62;
+        border: 2px solid yellow;
         padding: 20px;
         width: 300px;
-        box-sizing: 0 4px 8px rgba(0,0,0,0.05);
+        box-shadow: 0 4px 8px rgba(0,0,0,0.10);
         text-align: center;
         display: block;
         align-items: center;
         border-radius: 20px;
+        color: #fff;
+        transition: background 0.3s;
     }
     .menu-container h4{
-        color: #000;
-        font-size: 20px;
+        color: yellow;
+        font-size: 22px;
         margin-bottom: 1rem;
     }
     .menu-container blockquote{
         margin-top: 10px;
+        color: #ffe066;
+        font-size: 1rem;
     }
-
     .menu-container img {
         margin-top: 5px;
-            width: 100%;
-            height: 180px;
-            object-fit: cover;
-        }
-
+        width: 100%;
+        height: 180px;
+        object-fit: cover;
+        border-radius: 10px;
+        border: 2px solid #ffe066;
+    }
     .menu-container:hover{
-        background-color: bisque;
+        background-color: #ffe066;
+        color: #d32e62;
     }
     .btn{
-    padding: 12px 32px;
-    font-size: 1rem;
-    text-transform: uppercase;
-    background-color: rgb(248, 217, 15);
-    color: #222;
-    border: 1px solid #fff;
-    font-weight: 600;
-    cursor: pointer;
-}
-.btn:hover{
-    background: transparent;
-    color: black;
-    transition: 0.3s;
-}
-.header{
-    display: inline;
-    margin: 40px;
-    margin-left: 30px;
-    color: #fff;
-    font-size: 1rem;
-    padding: 20px;
-}
-a{
-    text-decoration: none;
-}
+        padding: 12px 32px;
+        font-size: 1rem;
+        text-transform: uppercase;
+        background-color: yellow;
+        color: #d32e62;
+        border: none;
+        font-weight: 600;
+        cursor: pointer;
+        border-radius: 8px;
+        margin-top: 10px;
+        transition: background 0.3s;
+    }
+    .btn:hover{
+        background: #d32e62;
+        color: yellow;
+    }
+    .header{
+        display: block;
+        margin: 40px auto 0 auto;
+        color: #d32e62;
+        font-size: 1.5rem;
+        padding: 20px;
+        text-align: center;
+    }
+    a{
+        text-decoration: none;
+    }
 </style>
 <div class="header">
     <h1 align="center">Pizza Menu 🍕🍕</h1><br><br><br>
@@ -76,51 +83,38 @@ a{
 <div class="menu-container">
     <h4>Tuna</h4>
     <img src="{{ url_for('static', filename='tuna.jpeg') }}" alt="Tuna">
-    <blockquote></blockquote>
-
-    <button class="btn"><a href="{{ url_for('views.add_to_cart', pizza_id=1) }}">Add To Cart</a>
-</button>
+    <blockquote>Classic tuna pizza with fresh onions and mozzarella.</blockquote>
+    <button class="btn"><a href="{{ url_for('views.add_to_cart', pizza_id=1) }}" style="color:inherit;">Add To Cart</a></button>
 </div>
 <div class="menu-container">
     <h4>Pepperoni</h4>
     <img src="{{ url_for('static', filename='pepperoni1.jpg') }}" alt="Pepperoni">
-    <blockquote></blockquote>
-
-    <button class="btn"><a href="{{ url_for('views.add_to_cart', pizza_id=2) }}">Add To Cart</a>
-</button>
+    <blockquote>Spicy pepperoni slices on a cheesy base.</blockquote>
+    <button class="btn"><a href="{{ url_for('views.add_to_cart', pizza_id=2) }}" style="color:inherit;">Add To Cart</a></button>
 </div>
 <div class="menu-container">
     <h4>Four Cheese</h4>
     <img src="{{ url_for('static', filename='four cheese.jpg') }}" alt="Four cheese">
-    <blockquote></blockquote>
-
-    <button class="btn"><a href="{{ url_for('views.add_to_cart', pizza_id=3) }}">Add To Cart</a>
-</button>
+    <blockquote>A blend of mozzarella, cheddar, parmesan, and blue cheese.</blockquote>
+    <button class="btn"><a href="{{ url_for('views.add_to_cart', pizza_id=3) }}" style="color:inherit;">Add To Cart</a></button>
 </div>
 <div class="menu-container">
     <h4>Margherita</h4>
     <img src="{{ url_for('static', filename='four cheese.jpg') }}" alt="Margherita">
-    <blockquote></blockquote>
-
-    <button class="btn"><a href="{{ url_for('views.add_to_cart', pizza_id=4) }}">Add To Cart</a>
-</button>
+    <blockquote>Fresh tomatoes, basil, and mozzarella cheese.</blockquote>
+    <button class="btn"><a href="{{ url_for('views.add_to_cart', pizza_id=4) }}" style="color:inherit;">Add To Cart</a></button>
 </div>
 <div class="menu-container">
     <h4>Hawaiian</h4>
     <img src="{{ url_for('static', filename='hawaiian.jpg') }}" alt="Hawaiian">
-    <blockquote></blockquote>
-
-    <button class="btn"><a href="{{ url_for('views.add_to_cart', pizza_id=5) }}">Add To Cart</a>
- </button>
+    <blockquote>Ham, pineapple, and cheese for a tropical twist.</blockquote>
+    <button class="btn"><a href="{{ url_for('views.add_to_cart', pizza_id=5) }}" style="color:inherit;">Add To Cart</a></button>
 </div>
-
 <div class="menu-container">
     <h4>Mushroom</h4>
-    <img src="{{ url_for('static', filename='hawaiian.jpg') }}" alt="hawaiian">
-    <blockquote></blockquote>
-
-    <button class="btn"><a href="{{ url_for('views.add_to_cart', pizza_id=6) }}">Add To Cart</a>
-</button>
+    <img src="{{ url_for('static', filename='mushroom1.jpg') }}" alt="Mushroom">
+    <blockquote>Fresh mushrooms, herbs, and creamy cheese.</blockquote>
+    <button class="btn"><a href="{{ url_for('views.add_to_cart', pizza_id=6) }}" style="color:inherit;">Add To Cart</a></button>
 </div>
 </section>
 {% endblock%}

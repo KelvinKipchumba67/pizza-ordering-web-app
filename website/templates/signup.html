@@ -6,26 +6,24 @@
 <style>
 .signup-container {
   background: #d32e62;
-  opacity: 100%;
   padding: 2rem;
   border-radius: 10px;
-  width: 300px;
+  width: 320px;
   margin: 5% auto;
   color: #fff;
   text-align: center;
+  box-shadow: 0 0 15px rgba(0,0,0,0.15);
 }
-
-.signup-container h2 {
+.signup-container h3 {
+  color: yellow;
   margin-bottom: 1.5rem;
 }
-
 .signup-container label {
   display: block;
   text-align: left;
   margin-bottom: 0.5rem;
   font-weight: bold;
 }
-
 .signup-container input {
   width: 100%;
   padding: 10px;
@@ -33,39 +31,32 @@
   border: none;
   border-radius: 5px;
 }
-
 .signup-container button {
   width: 100%;
   padding: 10px;
-  background: #ff9800;
+  background: yellow;
   border: none;
   border-radius: 5px;
-  color: white;
+  color: #d32e62;
   font-size: 1rem;
+  font-weight: bold;
   cursor: pointer;
   transition: 0.3s ease;
 }
-
 .signup-container button:hover {
-  background: #e68900;
+  background: #ffe066;
 }
 </style>
 <div class="signup-container">
-<h3 align="center">Sign Up</h3>
-<form method="POST">
-    <label >Username:</label>
-    <input type="text" name="username" required><br><br><br>
-
-    
-    <label >Email:</label>
-    <input type="text" name="email" required><br><br>
-
-    <label >Password:</label>
-    <input type="text" name="password" required><br><br><br>
-
-
-
-    <button type="submit" class="btn">Sign Up</button>
-</form>
+  <h3>Sign Up</h3>
+  <form method="POST">
+      <label>Username:</label>
+      <input type="text" name="username" placeholder="Enter Username i.e Kelvin" required>
+      <label>Email:</label>
+      <input type="email" name="email"  placeholder="Enter your email" required>
+      <label>Password:</label>
+      <input type="password" name="password" placeholder="Enter Password" required>
+      <button type="submit" class="btn">Sign Up</button>
+  </form>
 </div>
 {% endblock %}

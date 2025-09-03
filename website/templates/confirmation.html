@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block title %}Order Confirmation{% endblock %}
+{% block content %}
+<style>
+  .confirmation-container {
+    background: #d32e62;
+    color: #fff;
+    padding: 2rem;
+    border-radius: 10px;
+    width: 400px;
+    margin: 5% auto;
+    text-align: center;
+  }
+  .confirmation-container h2 {
+    color: yellow;
+    margin-bottom: 1.5rem;
+  }
+  .confirmation-container ul {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 1rem;
+  }
+  .confirmation-container li {
+    background: #fff;
+    color: #d32e62;
+    margin-bottom: 0.5rem;
+    padding: 0.5rem;
+    border-radius: 5px;
+  }
+</style>
+<div class="confirmation-container">
+    <h2>Order Confirmation</h2>
+    <p>Order ID: <strong>{{ order.id }}</strong></p>
+    <p>Placed on: <strong>{{ order.created_at }}</strong></p>
+    <p><strong>Delivery Address:</strong> {{ order.address }}</p>
+    <ul>
+      {% for item in order.items %}
+        <li>{{ item.quantity }} x {{ item.pizza.name }}</li>
+      {% endfor %}
+    </ul>
+    <p>Thank you for your order! Your delicious pizza is on its way. 🍕</p>
+    <p><strong>Payment:</strong> Paid on delivery (Cash or M-Pesa)</p>
+    <a href="/menu" style="color: yellow; text-decoration: underline;">Order More</a>
+</div>
+{% endblock %}

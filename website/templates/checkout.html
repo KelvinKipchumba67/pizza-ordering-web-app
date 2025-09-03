@@ -1,0 +1,94 @@
+{% extends "base.html" %}
+{% block title %}Checkout{% endblock %}
+{% block content %}
+<style>
+  .checkout-container {
+    background: #d32e62;
+    color: #fff;
+    padding: 2rem;
+    border-radius: 10px;
+    width: 400px;
+    margin: 5% auto;
+    text-align: center;
+    box-shadow: 0 0 15px rgba(0,0,0,0.15);
+  }
+  .checkout-container h2 {
+    color: yellow;
+    margin-bottom: 1.5rem;
+  }
+  .checkout-container ul {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 1rem;
+  }
+  .checkout-container li {
+    background: #fff;
+    color: #d32e62;
+    margin-bottom: 0.5rem;
+    padding: 0.5rem;
+    border-radius: 5px;
+  }
+  .checkout-container p {
+    font-size: 1.1rem;
+    margin-top: 1rem;
+    text-align: center;
+  }
+  .checkout-container strong {
+    color: yellow;
+  }
+  .checkout-container form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 1.5rem;
+    gap: 1rem;
+  }
+  .checkout-container input[type="text"] {
+    width: 90%;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    margin-bottom: 1rem;
+  }
+  .checkout-container button {
+    background-color: yellow;
+    color: #d32e62;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+  }
+  .checkout-container button:hover {
+    background-color: #ffe066;
+  }
+  .cart-empty {
+    text-align: center;
+    font-style: italic;
+    color: #ffe066;
+  }
+</style>
+<div class="checkout-container">
+  <h2>Checkout</h2>
+  {% if cart_items %}
+    <ul>
+      {% for item in cart_items %}
+        <li>{{ item.pizza.name }} (x{{ item.quantity }}) - KSh{{ item.pizza.price * item.quantity }}</li>
+      {% endfor %}
+    </ul>
+    <p><strong>Total:</strong> KSh{{ total }}</p>
+    <form method="POST" action="{{ url_for('views.checkout') }}">
+      <label for="address" style="color: yellow; font-weight: bold;">Delivery Address:</label>
+      <input type="text" name="address" id="address" placeholder="Enter your delivery address" value="{{ address or '' }}" required>
+      <button type="submit">Continue to Payment</button>
+    </form>
+    {% if address %}
+      <p><strong>Address:</strong> {{ address }}</p>
+    {% endif %}
+  {% else %}
+    <p class="cart-empty">Your cart is empty.</p>
+  {% endif %}
+</div>
+{% endblock %}

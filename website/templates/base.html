@@ -1,4 +1,4 @@
-<!-- The theme of the website  contains standard components-->
+<!-- The theme of the website,  contains standard components-->
 
 <!DOCTYPE html>
 <html lang="en">
@@ -98,11 +98,11 @@
         <a href="/menu">Menu</a>
         <a href="/cart">Your Cart</a>
         <a href="/logout">Logout</a>
+        <a href="/checkout">Checkout</a>
        <div class="welcome">
             Welcome, {{ current_user.username }} 👋
         </div>
     {% endif %}
-
     </header>
 </nav>
 {% with messages = get_flashed_messages(with_categories=true) %}
