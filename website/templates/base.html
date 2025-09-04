@@ -1,135 +1,90 @@
 <!-- The theme of the website,  contains standard components-->
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8"> 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}Home {% endblock %}</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
-</head>
-<body>
-    <style>
-        *{
-            margin: 0;
-            padding: 0;
-        }
-        body{
-            background-color: antiquewhite;
-            background: url('static/img/pic2.webp');
-            background-size: cover;
-            background-repeat: no-repeat;
-            background-position: center;
-            min-height: 100vh;
-        }
-        .header-section{
-            display: flex;
-            text-align: center;
-            justify-content: space-around;
-            background-color: #e3f0d6;
-            color: #d32e62;
-            height: 60px;
-            padding: 30px;
-            opacity: 100%;
-    
-          
-           gap: 2rem; /* equal spacing */
-           
-            a{
-               text-decoration: none; 
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>{% block title %}Home{% endblock %}</title>
+        <!-- TailwindCSS CDN -->
+        <script src="https://cdn.tailwindcss.com"></script>
+        <script>
+            tailwind.config = {
+                theme: {
+                    extend: {
+                                    colors: {
+                                        pizzaOrange: '#ff7f2a',
+                                        pizzaYellow: '#ffd600',
+                                        pizzaGray: '#222',
+                                        pizzaWhite: '#fffbe9',
+                                    },
+                                    fontFamily: {
+                                        headline: ['Montserrat', 'Arial', 'sans-serif'],
+                                        body: ['Inter', 'Arial', 'sans-serif'],
+                                    },
+                    }
+                }
             }
-        }
-        .site-footer{
-            margin-top: 80%;
-            background-color: #e3f0d6;
-            height: 60px;
-            justify-content: center;
-            color: #d32e62;
-            padding: 20px;
-            margin-top: 60px;
-            text-align: center ;
-            opacity: 100%;
-            padding: 20px;
-        }
-        .form{
-            color: black;
-        }
+        </script>
+</head>
+<body class="bg-gradient-to-br from-pizzaOrange via-pizzaYellow to-pizzaWhite min-h-screen font-body flex flex-col">
+    <!-- Sticky Navbar -->
+            <nav class="sticky top-0 z-50 bg-white/80 backdrop-blur shadow-lg">
+                <div class="flex flex-col sm:flex-row items-center justify-between px-2 sm:px-4 py-2 sm:py-3">
+                    <div class="flex items-center gap-2 w-full sm:w-auto justify-center sm:justify-start">
+                        <span class="text-2xl sm:text-3xl font-headline font-extrabold text-pizzaOrange">🍕 DoughDev Pizza</span>
+                    </div>
+                    <div class="flex flex-wrap items-center gap-3 sm:gap-6 text-base sm:text-lg font-semibold w-full sm:w-auto justify-center sm:justify-end mt-2 sm:mt-0">
+                        <a href="/" class="hover:text-pizzaOrange transition">Home</a>
+                        {% if not current_user.is_authenticated %}
+                            <a href="/sign-up" class="hover:text-pizzaOrange transition">Sign up</a>
+                            <a href="/login" class="hover:text-pizzaOrange transition">Login</a>
+                        {% else %}
+                            <a href="/menu" class="hover:text-pizzaOrange transition">Menu</a>
+                            <a href="/cart" class="relative hover:text-pizzaOrange transition">
+                                <span>Cart</span>
+                                <span class="absolute -top-2 -right-4 bg-pizzaOrange text-pizzaWhite rounded-full px-2 text-xs font-bold animate-bounce">🛒</span>
+                            </a>
+                            <a href="/checkout" class="hover:text-pizzaOrange transition">Checkout</a>
+                            <a href="/logout" class="hover:text-pizzaOrange transition">Logout</a>
+                            <span class="ml-2 sm:ml-4 text-pizzaOrange font-headline">Welcome, {{ current_user.username }} 👋</span>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="h-1 w-full bg-gradient-to-r from-pizzaOrange via-pizzaYellow to-pizzaOrange"></div>
+            </nav>
 
-        html, body {
-    height: 100%;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-}
+    <!-- Flash messages -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <ul class="flash-messages fixed top-20 left-1/2 -translate-x-1/2 z-50">
+                {% for category, message in messages %}
+                    <li class="px-4 py-2 mb-2 rounded-xl shadow-lg font-bold text-center
+                        {% if category == 'success' %}bg-green-100 text-green-800{% elif category == 'error' %}bg-red-100 text-red-800{% else %}bg-pizzaYellow text-pizzaGray{% endif %}">
+                        {{ message }}
+                    </li>
+                {% endfor %}
+            </ul>
+            <script>
+                setTimeout(() => {
+                    document.querySelectorAll('.flash-messages').forEach(e => e.style.display = 'none');
+                }, 4000);
+            </script>
+        {% endif %}
+    {% endwith %}
 
-.content {
-    flex: 1; /* pushes footer down */
-}
-.flash-messages {
-    list-style: none;
-    padding: 10px;
-    margin: 10px auto;
-    max-width: 500px;
-    border-radius: 8px;
-}
+    <!-- Main content -->
+        <main class="flex-1 w-full max-w-6xl mx-auto px-2 sm:px-6 py-4 sm:py-8">
+            {% block content %}{% endblock %}
+        </main>
 
-.flash-messages .success {
-    background-color: #d4edda;
-    color: #155724;
-}
-
-.flash-messages .error {
-    background-color: #f8d7da;
-    color: #721c24;
-}
-
-
-
-    </style>
-    
-<nav>
-    <header class="header-section">
-        <h1>DoughDev Pizza</h1>
-        <a href="/">Home</a>
-        {% if not current_user.is_authenticated %}
-        <a href="/sign-up">Sign up</a>
-        <a href="/login">Login</a>
-        {% else %}
-        <a href="/menu">Menu</a>
-        <a href="/cart">Your Cart</a>
-        <a href="/logout">Logout</a>
-        <a href="/checkout">Checkout</a>
-       <div class="welcome">
-            Welcome, {{ current_user.username }} 👋
-        </div>
-    {% endif %}
-    </header>
-</nav>
-{% with messages = get_flashed_messages(with_categories=true) %}
-  {% if messages %}
-    <ul class="flash-messages">
-      {% for category, message in messages %}
-        <li class="{{ category }}">{{ message }}</li>
-      {% endfor %}
-    </ul>
-  {% endif %}
-{% endwith %}
-    <div class="content">
-    </div>
-
-<script>
-  setTimeout(() => {
-    const messages = document.querySelector('.flash-messages');
-    if (messages) messages.style.display = 'none';
-  }, 4000); // 4 seconds
-</script>
-
-    <div id="content">
-        {% block content%}{% endblock%}
-    </div>
-     <footer class="site-footer">
-        <h4>Contact Us at <a href="gmail.com">support@gmail.com</a></h4>
-        <p>&copy; 2025 DoughDev Pizza. All rights reserved.</p>
-    </footer>
+    <!-- Footer -->
+        <footer class="site-footer bg-pizzaGray text-pizzaWhite py-4 sm:py-6 mt-8 sm:mt-12 shadow-2xl rounded-t-2xl">
+            <div class="text-center px-2">
+                <h4 class="font-headline text-lg sm:text-xl">Contact Us at <a href="mailto:support@gmail.com" class="underline text-pizzaYellow">support@gmail.com</a></h4>
+                <p class="mt-2">&copy; 2025 DoughDev Pizza. All rights reserved.</p>
+            </div>
+        </footer>
 </body>
 </html>

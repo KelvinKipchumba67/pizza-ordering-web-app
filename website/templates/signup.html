@@ -5,18 +5,20 @@
 {% block content%}
 <style>
 .signup-container {
-  background: #d32e62;
+  background: #ff7f2a;
   padding: 2rem;
-  border-radius: 10px;
+  border-radius: 20px;
   width: 320px;
   margin: 5% auto;
   color: #fff;
   text-align: center;
-  box-shadow: 0 0 15px rgba(0,0,0,0.15);
+  box-shadow: 0 4px 24px rgba(255,127,42,0.15);
 }
 .signup-container h3 {
-  color: yellow;
+  color: #ffd600;
   margin-bottom: 1.5rem;
+  font-size: 2rem;
+  font-family: 'Montserrat', Arial, sans-serif;
 }
 .signup-container label {
   display: block;
@@ -29,22 +31,25 @@
   padding: 10px;
   margin-bottom: 1rem;
   border: none;
-  border-radius: 5px;
+  border-radius: 8px;
 }
 .signup-container button {
   width: 100%;
   padding: 10px;
-  background: yellow;
+  background: linear-gradient(90deg,#ff7f2a,#ffd600);
   border: none;
-  border-radius: 5px;
-  color: #d32e62;
+  border-radius: 8px;
+  color: #222;
   font-size: 1rem;
   font-weight: bold;
   cursor: pointer;
-  transition: 0.3s ease;
+  box-shadow: 0 2px 8px rgba(255,127,42,0.10);
+  transition: transform 0.2s, box-shadow 0.2s;
 }
 .signup-container button:hover {
-  background: #ffe066;
+  background: linear-gradient(90deg,#ffd600,#ff7f2a);
+  transform: scale(1.05);
+  box-shadow: 0 4px 16px rgba(255,127,42,0.20);
 }
 </style>
 <div class="signup-container">
